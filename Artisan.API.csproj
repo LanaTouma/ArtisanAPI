@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Artisan.Application\Artisan.Application.csproj" />
+    <ProjectReference Include="..\Artisan.Infrastructure\Artisan.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

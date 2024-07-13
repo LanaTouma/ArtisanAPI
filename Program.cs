@@ -1,4 +1,20 @@
+using Artisan.Domain.IRepositories;
+using Artisan.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+
+using Artisan.Infrastructure.Repositories;
+using Artisan.Application.ArtisansAppService;
+
+
 var builder = WebApplication.CreateBuilder(args);
+// Add services to the container.
+builder.Services.AddDbContext<ArtisanDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Register repositories
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IArtisanRepository, ArtisanRepository>();
+builder.Services.AddScoped<IArtisanService, ArtisanService>();
 
 // Add services to the container.
 
